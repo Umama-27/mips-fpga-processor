@@ -2,7 +2,7 @@
 module alu_control (
     input  wire [1:0] alu_op,   // control unit  (00=lw/sw, 01=beq, 10=R, 11=addi)
     input  wire [5:0] funct,    // instruction[5:0]for R-type 
-    output reg  [3:0] alu_ctrl  // ALU ko dena hai yeh
+    output reg  [3:0] alu_ctrl  // for ALU 
 );
 
     always @(*) begin
