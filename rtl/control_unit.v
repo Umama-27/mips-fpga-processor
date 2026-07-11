@@ -5,9 +5,9 @@ module control_unit (
     output reg        reg_dst,    // 1=rd, 0=rt (write register select)
     output reg        alu_src,    // 1=immediate, 0=register
     output reg        mem_to_reg, // 1=memory?reg, 0=ALU?reg
-    output reg        reg_write,  // 1=register mein likhna hai
-    output reg        mem_read,   // 1=memory se padhna hai
-    output reg        mem_write,  // 1=memory mein likhna hai
+    output reg        reg_write,  // 1=register write
+    output reg        mem_read,   // 1=memory read
+    output reg        mem_write,  // 1=memory write
     output reg        branch,     // 1=beq instruction
     output reg        jump,       // 1=j instruction
     output reg  [1:0] alu_op      
