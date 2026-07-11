@@ -10,11 +10,11 @@ module control_unit (
     output reg        mem_write,  // 1=memory mein likhna hai
     output reg        branch,     // 1=beq instruction
     output reg        jump,       // 1=j instruction
-    output reg  [1:0] alu_op      // ALU Control ko hint
+    output reg  [1:0] alu_op      
 );
 
     always @(*) begin
-        // pehle sab zero kar do (default)
+     
         {reg_dst, alu_src, mem_to_reg,
          reg_write, mem_read, mem_write,
          branch, jump} = 8'b0;
