@@ -1,23 +1,18 @@
 `timescale 1ns / 1ps
 module SevenSegmentController(
-    input clk,                        // Vivado project ka 100MHz On-board clock
-    input [31:0] val_to_display,      // 32-bit value jo display karni hai
-    output reg [7:0] an,              // 8 Anodes (Nexys 4 display activation pins)
-    output reg [6:0] seg              // 7 Cathodes (A se G tak ke segments)
+    input clk,
+    input [31:0] val_to_display,
+    output reg [7:0] an,
+    output reg [6:0] seg
 );
-    // Refresh counter display multiplexing ke liye
     reg [19:0] refresh_counter = 0;
     wire [2:0] active_digit;
-
     always @(posedge clk) begin
         refresh_counter <= refresh_counter + 1;
     end
-    
-    // Counter ki upper 3 bits se hum switch karte hain 8 digits ke darmiyan
+
     assign active_digit = refresh_counter[19:17];
-
-    reg [3:0] hex_digit; // 4-bit data jo aik waqt main aik digit par show hoga
-
+    reg [3:0] hex_digit;
     always @(*) begin
         case(active_digit)
             3'd0: begin an = 8'b11111110; hex_digit = val_to_display[3:0];   end
@@ -32,7 +27,6 @@ module SevenSegmentController(
         endcase
     end
 
-    // Hexadecimal to 7-Segment Decoder (Nexys 4 par Active-Low yani 0 par LED chalti hai)
     always @(*) begin
         case(hex_digit)
             4'h0: seg = 7'b1000000;
