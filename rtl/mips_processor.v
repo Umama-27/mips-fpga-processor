@@ -77,7 +77,7 @@ module mips_processor (
         .alu_ctrl(alu_ctrl), .result(alu_result), .zero(zero)
     );
 
-    // ? Sirf ek data_memory instance - DMEM hata diya, DM rakha
+    
     data_memory DMEM (
         .clk(clk),
         .mem_read(mem_read),
