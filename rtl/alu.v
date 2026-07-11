@@ -2,10 +2,10 @@
 
 module alu (
     input  wire [31:0] a,        // operand A (rs)
-    input  wire [31:0] b,        // operand B (rt ya immediate)
-    input  wire [3:0]  alu_ctrl, // kaunsi operation
+    input  wire [31:0] b,        // operand B (rt or immediate)
+    input  wire [3:0]  alu_ctrl, // which operation
     output reg  [31:0] result,   // answer
-    output wire        zero      // result==0 to 1 (beq ke liye)
+    output wire        zero      // result==0 to 1 (for beq )
 );
     always @(*) begin
         case (alu_ctrl)
@@ -18,5 +18,5 @@ module alu (
             default: result = 32'b0;
         endcase
     end
-    assign zero = (result == 32'b0); // beq: dono equal hain to zero=1
+    assign zero = (result == 32'b0); // beq: if both equal zero=1
 endmodule
