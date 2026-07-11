@@ -6,8 +6,8 @@ module data_memory (
     input  wire [31:0] address,
     input  wire [31:0] write_data,
     output wire [31:0] read_data,
-    input  wire [4:0]  debug_addr,    // ? ADD: SW se memory address select
-    output wire [31:0] debug_mem_data // ? ADD: memory value 7-seg pe
+    input  wire [4:0]  debug_addr,    
+    output wire [31:0] debug_mem_data 
 );
     reg [31:0] mem [0:63];
     integer i;
